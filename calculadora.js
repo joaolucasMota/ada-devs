@@ -36,5 +36,18 @@ class Calculadora {
           console.error("Por favor, insira números válidos.");
         }
       }
+      subtrair(){
+        const n1 = parseFloat(input.question("Digite o primeiro valor: "));
+        const n2 = parseFloat(input.question("Digite o segundo valor: "));
+        
+        if (isNaN(n1) || isNaN(n2)) {
+            console.log('Por favor, insira números válidos.');
+            return;
+        }
+
+        const resultado = n1 - n2;
+        console.log(`Resultado da divisão: ${resultado}`);
+    }
+      
 }
 
