@@ -44,7 +44,6 @@ class Calculadora {
             console.log('Por favor, insira números válidos.');
             return;
         }
-
         const resultado = n1 - n2;
         console.log(`Resultado da divisão: ${resultado}`);
     }
