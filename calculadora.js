@@ -57,6 +57,18 @@ class Calculadora {
     console.log(`Resultado da subtração: ${resultado}`);
   }
 
+  somar() {
+    const numero1 = parseFloat(input.question("Digite o primeiro valor: "));
+    const numero2 = parseFloat(input.question("Digite o segundo valor: "));
+
+    if (isNaN(numero1) || isNaN(numero2)) {
+      console.log('Por favor, insira números válidos.');
+      return;
+    }
+    const resultado = numero1 + numero2;
+    console.log(`Resultado da soma: ${resultado}`);
+  }
+
   limpar() {
     this.numero1 = 0;
     this.numero2 = 0;
@@ -67,4 +79,5 @@ class Calculadora {
 const calculadora = new Calculadora();
 
 calculadora.percentual();
+calculadora.somar();
 calculadora.limpar();
