@@ -58,6 +58,17 @@ class Calculadora {
     console.log(`Resultado da subtração: ${resultado}`);
   }
 
+  somar() {
+    const numero1 = parseFloat(input.question("Digite o primeiro valor: "));
+    const numero2 = parseFloat(input.question("Digite o segundo valor: "));
+
+    if (isNaN(numero1) || isNaN(numero2)) {
+      console.log('Por favor, insira números válidos.');
+      return;
+    }
+    const resultado = numero1 + numero2;
+    console.log(`Resultado da soma: ${resultado}`);
+
   baskhara() {
     console.log("Calculando baskhara")
     const a = parseFloat(input.question("Digite o valor de a: "));
@@ -94,5 +105,9 @@ const calculadora = new Calculadora();
 
 calculadora.percentual();
 calculadora.limpar();
+
+calculadora.somar();
+calculadora.limpar();
+
 calculadora.baskhara();
 calculadora.limpar();
