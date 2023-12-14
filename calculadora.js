@@ -33,6 +33,7 @@ class Calculadora {
   }
 
   percentual() {
+    console.log("Calculando o percentual")
     this.numero1 = parseFloat(input.question("Digite o primeiro numero: "));
     this.numero2 = parseFloat(input.question("Digite o segundo numero: "));
 
@@ -57,6 +58,31 @@ class Calculadora {
     console.log(`Resultado da subtração: ${resultado}`);
   }
 
+  baskhara() {
+    console.log("Calculando baskhara")
+    const a = parseFloat(input.question("Digite o valor de a: "));
+    const b = parseFloat(input.question("Digite o valor de b: "));
+    const c = parseFloat(input.question("Digite o valor de c: "));
+
+    if (isNaN(a) || isNaN(b) || isNaN(c)) {
+      console.log('Por favor, insira números válidos.');
+      return;
+    }
+
+    const delta = Math.pow(b, 2) - (4 * a * c);
+
+    if (delta < 0) {
+      console.log("Delta negativo. Equação não possui raizes reais.");
+      return;
+    }
+
+    const x1 = (-b + Math.sqrt(delta)) / (2 * a);
+    const x2 = (-b - Math.sqrt(delta)) / (2 * a);
+
+    console.log(`x1 = ${x1.toFixed(4)}`);
+    console.log(`x2 = ${x2.toFixed(4)}`);
+  }
+
   limpar() {
     this.numero1 = 0;
     this.numero2 = 0;
@@ -67,4 +93,6 @@ class Calculadora {
 const calculadora = new Calculadora();
 
 calculadora.percentual();
+calculadora.limpar();
+calculadora.baskhara();
 calculadora.limpar();
