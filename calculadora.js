@@ -68,7 +68,7 @@ class Calculadora {
     }
     const resultado = numero1 + numero2;
     console.log(`Resultado da soma: ${resultado}`);
-
+  }
   baskhara() {
     console.log("Calculando baskhara")
     const a = parseFloat(input.question("Digite o valor de a: "));
@@ -94,6 +94,18 @@ class Calculadora {
     console.log(`x2 = ${x2.toFixed(4)}`);
   }
 
+  radiciacao() {
+    const radicando = parseFloat(input.question("Digite o valor do radicando: "))
+    const indice = parseFloat(input.question("Digite o valor do indice: "))
+
+    if(!isNaN(radicando) && !isNaN(indice) && radicando >= 0 && indice > 0) {
+      let resultado = this.valorAtual = Math.pow(radicando, 1 / indice);
+      return console.log(resultado);
+    } else {
+      console.error("Por favor, insira números válidos.");
+    }
+  }
+
   limpar() {
     this.numero1 = 0;
     this.numero2 = 0;
@@ -111,3 +123,4 @@ calculadora.limpar();
 
 calculadora.baskhara();
 calculadora.limpar();
+calculadora.radiciacao();
