@@ -7,83 +7,143 @@ class Calculadora {
     this.resultado = 0;
   }
 
-  dividir() {
-    const numero1 = parseFloat(input.question('Digite o primeiro numero: '));
-    const numero2 = parseFloat(input.question('Digite o segundo numero: '));
+  iniciarCalculadora() {
+    console.log("***********************************");
+    console.log("*** BEM VINDO A CALCULADORA ADA ***");
+    console.log("***********************************");
+    this.exibirMenu();
+  }
 
-    if (isNaN(numero1) || isNaN(numero2)) {
-      console.log('Por favor, insira números válidos.');
+  exibirMenu() {
+    console.log('\nEscolha uma opcao:');
+    console.log('1. Divisao');
+    console.log('2. Potenciacao');
+    console.log('3. Percentual');
+    console.log('4. Subtracao');
+    console.log('5. Soma');
+    console.log('6. Bhaskara');
+    console.log('7. Radiciacao');
+    console.log('0. Sair');
+
+    const opcao = input.questionInt('Digite o numero da opcao desejada: ');
+
+    switch (opcao) {
+      case 1:
+        this.dividir();
+        break;
+      case 2:
+        this.potenciacao();
+        break;
+      case 3:
+        this.percentual();
+        break;
+      case 4:
+        this.subtracao();
+        break;
+      case 5:
+        this.somar();
+        break;
+      case 6:
+        this.bhaskara();
+        break;
+      case 7:
+        this.radiciacao();
+        break;
+      case 0:
+        console.log('Saindo do programa. Ate mais!');
+        process.exit(0);
+        break;
+      default:
+        console.log('Opcao invalida. Tente novamente.');
+    }
+
+    this.exibirMenu();
+  }
+
+  dividir() {
+    console.log('\n*** Realizando Divisao ***');
+    this.numero1 = parseFloat(input.question('Digite o primeiro numero: '));
+    this.numero2 = parseFloat(input.question('Digite o segundo numero: '));
+
+    if (isNaN(this.numero1) || isNaN(this.numero2)) {
+      console.log('Por favor, insira numeros validos.');
       return;
     }
 
-    const resultado = numero1 / numero2;
-    console.log(`Resultado da divisão: ${resultado}`);
+    this.resultado = this.numero1 / this.numero2;
+    console.log(`Resultado da divisao: ${this.resultado}`);
   }
 
   potenciacao() {
-    const base = parseFloat(input.question("Digite a base: "));
-    const expoente = parseFloat(input.question("Digite o expoente: "));
+    console.log('\n*** Realizando Potenciacao ***');
+    const base = parseFloat(input.question('Digite a base: '));
+    const expoente = parseFloat(input.question('Digite o expoente: '));
 
     if (!isNaN(base) && !isNaN(expoente)) {
-      let resultado = this.valorAtual = Math.pow(base, expoente);
-      return console.log(resultado)
+      this.resultado = Math.pow(base, expoente);
+      console.log(`Resultado da potenciacao: ${this.resultado}`);
     } else {
-      console.error("Por favor, insira números válidos.");
+      console.error('Por favor, insira numeros validos.');
     }
   }
 
   percentual() {
-    console.log("Calculando o percentual")
-    this.numero1 = parseFloat(input.question("Digite o primeiro numero: "));
-    this.numero2 = parseFloat(input.question("Digite o segundo numero: "));
+    console.log('\n*** Calculando Percentual ***');
+    this.numero1 = parseFloat(input.question('Digite o valor total: '));
+    this.numero2 = parseFloat(input.question('Digite a porcentagem desejada: '));
 
     if (isNaN(this.numero1) || isNaN(this.numero2)) {
-      console.log("Por favor, insira números válidos.");
+      console.log('Por favor, insira numeros validos.');
       return;
     }
 
     this.resultado = this.numero1 * (this.numero2 / 100);
-    console.log(`${this.numero2}% de ${this.numero1} = ${this.resultado}`);
+    console.log(`${this.numero2}% de ${this.numero1} e igual a ${this.resultado}`);
   }
 
-  subtrair() {
-    const n1 = parseFloat(input.question("Digite o primeiro valor: "));
-    const n2 = parseFloat(input.question("Digite o segundo valor: "));
+  subtracao() {
+    console.log('\n*** Realizando Subtracao ***');
+    this.numero1 = parseFloat(input.question('Digite o primeiro valor: '));
+    this.numero2 = parseFloat(input.question('Digite o segundo valor: '));
 
-    if (isNaN(n1) || isNaN(n2)) {
-      console.log('Por favor, insira números válidos.');
+    if (isNaN(this.numero1) || isNaN(this.numero2)) {
+      console.log('Por favor, insira numeros validos.');
       return;
     }
-    const resultado = n1 - n2;
-    console.log(`Resultado da subtração: ${resultado}`);
+
+    this.resultado = this.numero1 - this.numero2;
+    console.log(`Resultado da subtracao: ${this.resultado}`);
   }
 
   somar() {
-    const numero1 = parseFloat(input.question("Digite o primeiro valor: "));
-    const numero2 = parseFloat(input.question("Digite o segundo valor: "));
+    console.log('\n*** Realizando Soma ***');
+    this.numero1 = parseFloat(input.question('Digite o primeiro valor: '));
+    this.numero2 = parseFloat(input.question('Digite o segundo valor: '));
 
-    if (isNaN(numero1) || isNaN(numero2)) {
-      console.log('Por favor, insira números válidos.');
+    if (isNaN(this.numero1) || isNaN(this.numero2)) {
+      console.log('Por favor, insira numeros validos.');
       return;
     }
-    const resultado = numero1 + numero2;
-    console.log(`Resultado da soma: ${resultado}`);
+
+    this.resultado = this.numero1 + this.numero2;
+    console.log(`Resultado da soma: ${this.resultado}`);
   }
-  baskhara() {
-    console.log("Calculando baskhara")
-    const a = parseFloat(input.question("Digite o valor de a: "));
-    const b = parseFloat(input.question("Digite o valor de b: "));
-    const c = parseFloat(input.question("Digite o valor de c: "));
+
+  bhaskara() {
+    console.log('\n*** Calculando Bhaskara ***');
+    const a = parseFloat(input.question('Digite o valor de a: '));
+    const b = parseFloat(input.question('Digite o valor de b: '));
+    const c = parseFloat(input.question('Digite o valor de c: '));
 
     if (isNaN(a) || isNaN(b) || isNaN(c)) {
-      console.log('Por favor, insira números válidos.');
+      console.log('Por favor, insira numeros validos.');
       return;
     }
 
-    const delta = Math.pow(b, 2) - (4 * a * c);
+    const delta = Math.pow(b, 2) - 4 * a * c;
 
     if (delta < 0) {
-      console.log("Delta negativo. Equação não possui raizes reais.");
+      console.log("Delta negativo. Equacao nao possui raizes reais.");
       return;
     }
 
@@ -95,32 +155,20 @@ class Calculadora {
   }
 
   radiciacao() {
-    const radicando = parseFloat(input.question("Digite o valor do radicando: "))
-    const indice = parseFloat(input.question("Digite o valor do indice: "))
+    console.log('\n*** Realizando Radiciacao ***');
+    const radicando = parseFloat(input.question('Digite o valor do radicando: '));
+    const indice = parseFloat(input.question('Digite o valor do indice: '));
 
-    if(!isNaN(radicando) && !isNaN(indice) && radicando >= 0 && indice > 0) {
-      let resultado = this.valorAtual = Math.pow(radicando, 1 / indice);
-      return console.log(resultado);
+    if (!isNaN(radicando) && !isNaN(indice) && radicando >= 0 && indice > 0) {
+      this.resultado = Math.pow(radicando, 1 / indice);
+      console.log(`Resultado da radiciacao: ${this.resultado}`);
     } else {
-      console.error("Por favor, insira números válidos.");
+      console.error('Por favor, insira numeros validos.');
     }
-  }
-
-  limpar() {
-    this.numero1 = 0;
-    this.numero2 = 0;
-    this.resultado = 0;
   }
 }
 
 const calculadora = new Calculadora();
 
-calculadora.percentual();
-calculadora.limpar();
+calculadora.iniciarCalculadora();
 
-calculadora.somar();
-calculadora.limpar();
-
-calculadora.baskhara();
-calculadora.limpar();
-calculadora.radiciacao();
