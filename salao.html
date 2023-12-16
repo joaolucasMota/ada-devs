@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salão de Beleza G3</title>
+</head>
+
+<body>
+    <script>
+        class SalaoDeBeleza {
+            constructor() {
+                this.nomeCliente = '';
+                this.horario = '';
+                this.valorCorte = 0;
+                this.pagamentoRecebido = false;
+            }
+
+            agendarCorte(nomeCliente) {
+                this.nomeCliente = nomeCliente;
+                alert(`Olá, ${this.nomeCliente}!`);
+            }
+
+            verificarDisponibilidade(horario) {
+                this.horario = horario;
+                alert(`Pode ser às ${this.horario}?`);
+                const resposta = prompt('Digite "sim" ou "não":').toLowerCase();
+                if (resposta === 'sim') {
+                    alert('Ótimo! Vamos iniciar.');
+                    this.iniciarCorte();
+                } else {
+                    alert('Que pena! Outro horário poderia funcionar?');
+                }
+            }
+
+            iniciarCorte() {
+                alert('Corte iniciado...');
+                this.finalizarCorte();
+            }
+
+            finalizarCorte() {
+                alert('Corte finalizado.');
+                this.definirValor();
+            }
+
+            definirValor() {
+                this.valorCorte = 50;
+                alert(`O valor do corte é R$${this.valorCorte}.`);
+                this.verificarPagamento();
+            }
+
+            verificarPagamento() {
+                const valorRecebido = parseFloat(prompt('Digite o valor recebido:'));
+                if (valorRecebido == this.valorCorte) {
+                    alert('Pagamento recebido. Obrigado!');
+                    this.pagamentoRecebido = true;
+                } else if (valorRecebido > this.valorCorte) {
+                    alert('Pagamento recebido. Seu troco é: ' + (valorRecebido - this.valorCorte));
+                    this.pagamentoRecebido = true;
+                } else {
+                    alert('Valor insuficiente. Por favor, efetue o pagamento correto.');
+                    this.verificarPagamento();
+                }
+            }
+        }
+
+        const salao = new SalaoDeBeleza();
+        const nome = prompt('Digite seu nome:');
+        salao.agendarCorte(nome);
+
+        const horarioDesejado = prompt('Digite o horário desejado:');
+        salao.verificarDisponibilidade(horarioDesejado);
+    </script>
+</body>
+
+</html>
